@@ -1,0 +1,117 @@
+:root { color-scheme: light dark; }
+
+/* --- Light defaults --- */
+:root {
+  --bg: #ffffff;
+  --fg: #0f172a;           /* text */
+  --muted: #334155;
+  --card: #f8fafc;
+  --card-border: #e5e7eb;
+  --button-bg: #f1f5f9;
+  --link: #2563eb;
+  --link-hover: #1e40af;
+}
+
+/* --- Dark overrides when OS prefers dark --- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0f19;         /* near-slate */
+    --fg: rgba(255,255,255,.87);
+    --muted: rgba(255,255,255,.7);
+    --card: #121826;
+    --card-border: #233044;
+    --button-bg: #1a2433;
+    --link: #93c5fd;
+    --link-hover: #bfdbfe;
+  }
+}
+
+/* Apply the tokens */
+html, body, #root {
+  height: 100%;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+a { color: var(--link); }
+a:hover { color: var(--link-hover); }
+
+button {
+  background: var(--button-bg);
+  color: var(--fg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: .6em 1.2em;
+}
+
+.rubric-container {
+  position: relative;
+  width: 100%;
+  overflow-x: auto; /* allows full scroll */
+}
+
+.slider {
+  position: absolute;
+  bottom: 0;  /* stick it under text */
+  width: 100%; 
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  margin: 0;          /* remove default margins in some browsers */
+  padding: 0;
+}
+
+/* WebKit (Chrome, Safari, Edge) */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 10px;                /* match your custom bar height */
+  background: transparent;     /* we draw the bar with our own DIV */
+  border: 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--link);
+  border: 2px solid rgba(0,0,0,.2);
+  margin-top: -4px;            /* centers thumb over the 10px track */
+}
+
+/* Firefox */
+input[type="range"]::-moz-range-track {
+  height: 10px;
+  background: transparent;
+  border: 0;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--link);
+  border: 2px solid rgba(0,0,0,.2);
+}
+
+/* Optional: hide the default focus outline and add your own */
+input[type="range"]:focus {
+  outline: none;
+}
+input[type="range"]:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--link) 30%, transparent);
+}
+input[type="range"]:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--link) 30%, transparent);
+}

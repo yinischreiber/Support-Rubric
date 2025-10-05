@@ -1,5 +1,7 @@
-import Rubric from './rubric.jsx';
+import AdditionalInformation from "./AdditionalInformation.jsx";
 
 export default function App() {
-  return <Rubric />;
+  return (
+    <AdditionalInformation />
+  );
 }

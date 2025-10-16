@@ -1,7 +1,5 @@
-import AdditionalInformation from "./AdditionalInformation.jsx";
+import AdditionalInformation from "./AdditionalInformation";
 
 export default function App() {
-  return (
-    <AdditionalInformation />
-  );
+  return <AdditionalInformation />;
 }

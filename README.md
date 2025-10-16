@@ -1,16 +1,24 @@
-# React + Vite
+# Additional Information Sandbox Guide
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is scoped to the **Additional Information** form. The app shell renders only that page so you can prototype the layout without any routing or additional views.
 
-Currently, two official plugins are available:
+## Local preview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+Vite will print a local URL (usually `http://localhost:5173/`) that hot-reloads as you edit files under `src/`.
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Reproducing the form in a fresh sandbox
 
-## Expanding the ESLint configuration
+1. **Start with a React + Vite sandbox.** Keep the default `react`/`react-dom` dependencies.
+2. **Copy the theme tokens.** Replace the sandbox’s `src/index.css` with [`src/index.css`](./src/index.css) from this repo so the CSS variables used by the form resolve.
+3. **Add the form styles.** Create `src/AdditionalInformation.css` and paste in [`src/AdditionalInformation.css`](./src/AdditionalInformation.css).
+4. **Add the component.** Create `src/AdditionalInformation.jsx` with the contents of [`src/AdditionalInformation.jsx`](./src/AdditionalInformation.jsx).
+5. **Point the app to the form.** Update `src/App.jsx` in the sandbox to import and return `<AdditionalInformation />` just like [our `App.jsx`](./src/App.jsx).
+6. **Leave the entry point alone.** The default Vite `src/main.jsx` already mounts `<App />` and imports `index.css`.
+7. **Run the preview.** Install dependencies and run the dev server (`npm install`, then `npm run dev`) to see the form.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+If the sandbox shows a blank screen, double-check the console for typos—missing file imports or mis-capitalized file names are the most common causes when copying files between environments.
